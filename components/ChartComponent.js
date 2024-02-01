@@ -1,40 +1,99 @@
-import React from 'react';
-import { LineChart } from 'react-native-chart-kit';
-import { Dimensions } from 'react-native';
+// import React, { useEffect, useState } from 'react';
+// import { StyleSheet, View, Text } from 'react-native';
+// import { db, ref, onValue } from '../firebase';
+// import { LineChart } from 'react-native-chart-kit';
+// import { Dimensions } from 'react-native';
 
-const ChartComponent = () => {
-  const data = {
-    labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun'],
-    datasets: [
-      {
-        data: [20, 45, 28, 80, 99, 43],
-      },
-    ],
-  };
+// const ChartComponent = () => {
+//   const [sensorData, setSensorData] = useState({});
 
-  return (
-    <LineChart
-      data={data}
-      width={Dimensions.get('window').width - 16}
-      height={200}
-      yAxisLabel="kWh"
-      yAxisSuffix="k"
-      chartConfig={{
-        backgroundGradientFrom: '#f8fcfb',
-        backgroundGradientTo: '#f8fcfb',
-        decimalPlaces: 2,
-        color: (opacity = 1) => `rgba(7, 19, 15, ${opacity})`,
-        labelColor: (opacity = 1) => `rgba(7, 19, 15, ${opacity})`,
-        style: {
-          borderRadius: 16,
-        },
-      }}
-      style={{
-        marginVertical: 8,
-        borderRadius: 16,
-      }}
-    />
-  );
-};
+//   useEffect(() => {
+//     const sensorRef = ref(db, 'Sensor');
 
-export default ChartComponent;
+//     const unsubscribeSensor = onValue(sensorRef, (snapshot) => {
+//       if (snapshot.exists()) {
+//         const data = snapshot.val();
+//         console.log('Fetched data:', data);
+//         setSensorData(data);
+//       } else {
+//         console.log('No data found in Firebase.');
+//       }
+//     });
+
+//     // Clean up the subscription when the component unmounts
+//     return () => {
+//       unsubscribeSensor();
+//     };
+//   }, []);
+
+//   // Filter out non-timestamp entries
+//   const timestamps = Object.keys(sensorData).filter((key) => key !== 'ldr_data' && key !== 'voltage');
+//   const ldrDataValues = timestamps.map((timestamp) => sensorData[timestamp]?.ldr_data);
+
+//   // Show only the latest n data points (adjust n as needed)
+//   const numLatestDataPoints = 6; // Change this to the desired number of data points to show
+//   const latestTimestamps = ["30s ago", " ", "15s ago", " ", "Now"];
+//   const latestLdrDataValues = ldrDataValues.slice(-numLatestDataPoints);
+
+//   // Add logs to check extracted data
+//   console.log('Latest Timestamps:', latestTimestamps);
+//   console.log('Latest LDR Data Values:', latestLdrDataValues);
+
+//   const lineChartData = {
+//     labels: latestTimestamps,
+//     datasets: [
+//       {
+//         data: latestLdrDataValues,
+//       },
+//     ],
+//   };
+
+//   return (
+//     <View>
+//       <Text style={styles.voltText}>Voltage Screen</Text>
+//       <View>
+//         <Text>Bezier Line Chart</Text>
+//         <LineChart
+//           data={lineChartData}
+//           width={Dimensions.get('window').width} // from react-native
+//           height={220}
+//           yAxisLabel="$"
+//           yAxisSuffix="k"
+//           yAxisInterval={1} // optional, defaults to 1
+//           chartConfig={{
+//             backgroundColor: '#e26a00',
+//             backgroundGradientFrom: '#fb8c00',
+//             backgroundGradientTo: '#ffa726',
+//             decimalPlaces: 2, // optional, defaults to 2dp
+//             color: (opacity = 1) => `rgba(255, 255, 255, ${opacity})`,
+//             labelColor: (opacity = 1) => `rgba(255, 255, 255, ${opacity})`,
+//             style: {
+//               borderRadius: 16,
+//             },
+//             propsForDots: {
+//               r: '6',
+//               strokeWidth: '2',
+//               stroke: '#ffa726',
+//             },
+//           }}
+//           bezier
+//           style={styles.chart}
+//         />
+//       </View>
+//     </View>
+//   );
+// };
+
+// const styles = StyleSheet.create({
+//   chart: {
+//     marginVertical: 8,
+//     borderRadius: 16,
+//   },
+//   voltText: {
+//     fontSize: 20,
+//     fontWeight: 'bold',
+//     textAlign: 'center',
+//   },
+// });
+
+// export default ChartComponent;

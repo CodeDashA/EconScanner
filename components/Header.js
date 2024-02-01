@@ -3,19 +3,18 @@ import { StyleSheet, Dimensions, View, StatusBar } from 'react-native';
 import { TabView, SceneMap, TabBar } from 'react-native-tab-view';
 import ConsumptionScreen from './ConsumptionScreen';
 import VoltageScreen from './VoltageScreen';
-import EnergyScreen from './EnergyScreen';
+
+
 
 const FirstRoute = () => (
   <ConsumptionScreen />
 );
 
 const SecondRoute = () => (
-  <View style={[styles.scene, { backgroundColor: '#f8fcfb' }]} />
+  <VoltageScreen/>
+  
 );
 
-const ThirdRoute = () => (
-  <View style={[styles.scene, { backgroundColor: '#f8fcfb' }]} />
-);
 
 export default class TabViewExample extends React.Component {
   state = {
@@ -23,7 +22,6 @@ export default class TabViewExample extends React.Component {
     routes: [
       { key: 'chat', title: 'Consumption' },
       { key: 'status', title: 'Voltage' },
-      { key: 'call', title: 'Energy(Kwh)' },
     ],
   };
 
@@ -36,7 +34,6 @@ export default class TabViewExample extends React.Component {
           renderScene={SceneMap({
             chat: FirstRoute,
             status: SecondRoute,
-            call: ThirdRoute,
           })}
           renderTabBar={props => (
             <TabBar
@@ -49,6 +46,7 @@ export default class TabViewExample extends React.Component {
           onIndexChange={index => this.setState({ index })}
           initialLayout={{ width: Dimensions.get('window').width }}
         />
+       
       </>
     );
   }

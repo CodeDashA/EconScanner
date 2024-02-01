@@ -1,23 +1,19 @@
-// import React from 'react';
-// import { View, Text } from 'react-native';
-// import Chart from './chart';
+import React from 'react';
+import { StyleSheet, View, Text } from 'react-native';
+import ChartCom from './ChartScreen';
 
-// const VoltageScreen = () => {
-//   const chartData = {
-//     labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May'],
-//     datasets: [
-//       {
-//         data: [20, 45, 28, 80, 99],
-//       },
-//     ],
-//   };
+const VoltageScreen = () => {
+  return (
+    <View style={{ flex: 1, backgroundColor: '#f8fcfb', alignItems: 'center', justifyContent: 'center' }}>
+      <Text style={styles.voltText}>Voltage Screen</Text>
+      <ChartCom/>
+    </View>
+  );
+};
 
-//   return (
-//     <View>
-//       <Text>Consumption Screen</Text>
-//       <Chart data={chartData} width={300} height={200} />
-//     </View>
-//   );
-// };
+const styles = StyleSheet.create({
+  voltText: {
+  },
+});
 
-// export default VoltageScreen;
+export default VoltageScreen;

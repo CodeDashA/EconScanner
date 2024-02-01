@@ -1,7 +1,6 @@
 import React from 'react';
 import Header from './components/Header';
 import HomeScreen from './components/Home';
-import Stat from './components/Stat';
 import { StyleSheet, Text, View, FlatList, TouchableOpacity } from 'react-native';
 import {NavigationContainer} from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
